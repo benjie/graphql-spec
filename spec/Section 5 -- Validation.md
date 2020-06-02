@@ -40,7 +40,11 @@ type Query {
   dog: Dog
 }
 
-enum DogCommand { SIT, DOWN, HEEL }
+enum DogCommand {
+  SIT
+  DOWN
+  HEEL
+}
 
 type Dog implements Pet {
   name: String!
@@ -69,7 +73,9 @@ type Human implements Sentient {
   pets: [Pet!]
 }
 
-enum CatCommand { JUMP }
+enum CatCommand {
+  JUMP
+}
 
 type Cat implements Pet {
   name: String!
@@ -950,7 +956,7 @@ Defined fragments must be used within a document.
 
 For example the following is an invalid document:
 
-```graphql counter-example
+```rawgraphql counter-example
 fragment nameFragment on Dog { # unused
   name
 }
@@ -1270,7 +1276,7 @@ interface scope which it implements.
 In the example below, the `...resourceFragment` fragments spreads is valid,
 since `Resource` implements `Node`.
 
-```graphql example
+```rawgraphql example
 interface Node {
   id: ID!
 }
@@ -1492,7 +1498,7 @@ For example, the following query will not pass validation because `@skip` has
 been used twice for the same field:
 
 ```graphql counter-example
-query ($foo: Boolean = true, $bar: Boolean = false) {
+query($foo: Boolean = true, $bar: Boolean = false) {
   field @skip(if: $foo) @skip(if: $bar)
 }
 ```
@@ -1501,7 +1507,7 @@ However the following example is valid because `@skip` has been used only once
 per location, despite being used twice in the query and on the same named field:
 
 ```graphql example
-query ($foo: Boolean = true, $bar: Boolean = false) {
+query($foo: Boolean = true, $bar: Boolean = false) {
   field @skip(if: $foo) {
     subfieldA
   }
@@ -1577,7 +1583,10 @@ used as inputs.
 For these examples, consider the following typesystem additions:
 
 ```graphql example
-input ComplexInput { name: String, owner: String }
+input ComplexInput {
+  name: String
+  owner: String
+}
 
 extend type Query {
   findDog(complex: ComplexInput): Dog
