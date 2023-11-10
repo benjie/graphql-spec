@@ -1869,14 +1869,14 @@ variable.
 IsVariableUsageAllowed(variableDefinition, variableUsage):
 
 - Let {variableType} be the expected type of {variableDefinition}.
-- Let {locationType} be the expected type of the {Argument}, {ObjectField}, or
-  {ListValue} entry where {variableUsage} is located.
+- Let {locationType} be the expected type of the {Argument}, {InputObjectField},
+  or {ListValue} entry where {variableUsage} is located.
 - If {locationType} is a non-null type AND {variableType} is NOT a non-null
   type:
   - Let {hasNonNullVariableDefaultValue} be {true} if a default value exists for
     {variableDefinition} and is not the value {null}.
   - Let {hasLocationDefaultValue} be {true} if a default value exists for the
-    {Argument} or {ObjectField} where {variableUsage} is located.
+    {Argument} or {InputObjectField} where {variableUsage} is located.
   - If {hasNonNullVariableDefaultValue} is NOT {true} AND
     {hasLocationDefaultValue} is NOT {true}, return {false}.
   - Let {nullableLocationType} be the unwrapped nullable type of {locationType}.
